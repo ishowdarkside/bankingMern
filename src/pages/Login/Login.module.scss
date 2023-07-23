@@ -1,0 +1,47 @@
+@import "../../scss/mixins.scss";
+.loginBody {
+  h1 {
+    font-size: 5rem;
+    font-weight: 400;
+
+    @include responsive("mobile") {
+      font-size: 4rem;
+    }
+  }
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    color: #313131;
+  }
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  width: 43rem;
+  max-width: 43rem;
+
+  @include responsive("mobile") {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  input {
+    width: 100%;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  :global(img) {
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+  }
+}

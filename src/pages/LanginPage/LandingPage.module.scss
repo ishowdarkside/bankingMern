@@ -1,17 +1,28 @@
+@import "../../scss//mixins.scss";
 .body {
   height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
 
+  @include responsive("tab-port") {
+    text-align: center;
+  }
   :global(.container) {
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    @include responsive("tab-port") {
+      justify-content: center;
+    }
+
     img {
       clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+      @include responsive("tab-port") {
+        display: none;
+      }
     }
   }
 
@@ -29,4 +40,8 @@
   margin-top: 3rem;
   display: flex;
   gap: 3rem;
+
+  @include responsive("tab-port") {
+    justify-content: center;
+  }
 }

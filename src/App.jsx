@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import LandingPage from "./pages/LanginPage/LandingPage";
 import Signup from "./pages/Signup/Signup";
 import { Toaster } from "react-hot-toast";
+import Login from "./pages/Login/Login";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/auth/signup" element={<Signup />} />
+          <Route path="/auth/login" element={<Login />} />
           <Route path="/app" element={<Navigate to="dashboard" />}>
             <Route path="dashboard" element={<Dashboard />} />
           </Route>

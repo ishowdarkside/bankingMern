@@ -1,3 +1,4 @@
+@import "../../scss/mixins.scss";
 .inputWrapper {
   position: relative;
   :global(img) {
@@ -15,6 +16,10 @@
   width: 43rem;
   max-width: 43rem;
 
+  @include responsive("mobile") {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   input {
     width: 100%;
   }
@@ -24,6 +29,10 @@
   h1 {
     font-size: 5rem;
     font-weight: 400;
+
+    @include responsive("mobile") {
+      font-size: 4rem;
+    }
   }
   height: 100dvh;
   display: flex;

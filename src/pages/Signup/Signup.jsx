@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { SpinnerCircular } from "spinners-react";
+import Spinner from "../../ui/Spinner";
 import { signup } from "../../services/signup";
 import Button from "../../ui/Button/Button";
 import Input from "../../ui/Input/Input";
@@ -41,18 +41,7 @@ export default function Signup() {
     }
   }
 
-  if (isLoading)
-    return (
-      <SpinnerCircular
-        color="#313131"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-        }}
-      />
-    );
+  if (isLoading) return <Spinner />;
   return (
     <div className={styles.signupBody}>
       <h1>Darkside banking</h1>
@@ -210,7 +199,7 @@ export default function Signup() {
         </div>
 
         <Button type="primary" disabled={isLoading}>
-          LOGIN
+          SIGNUP
         </Button>
       </form>
 

@@ -11,7 +11,7 @@
 .registerForm {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+
   width: 43rem;
   max-width: 43rem;
 
@@ -35,4 +35,18 @@
   a {
     color: #313131;
   }
+}
+
+.errorMessage {
+  color: #ef4444;
+  position: absolute;
+  bottom: -0.5rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  transform: translateY(-50%);
+}
+
+.fieldWrapper {
+  padding-bottom: 2.5rem;
+  position: relative;
 }

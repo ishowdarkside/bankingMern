@@ -1,0 +1,12 @@
+.input {
+  background-color: #f6f7f9;
+  border-radius: 1rem;
+  color: #c0c0c9;
+  outline: none;
+  padding: 1.5rem 2rem 1.5rem 5rem;
+  border: none;
+
+  &::placeholder {
+    color: #c0c0c9;
+  }
+}

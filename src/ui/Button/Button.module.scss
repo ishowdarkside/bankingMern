@@ -1,0 +1,35 @@
+.primary {
+  color: #fff;
+  background-color: #313131;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 1px solid #313131;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    letter-spacing: 5px;
+  }
+}
+
+.secondary {
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #313131;
+  background-color: transparent;
+  border: 1px solid #313131;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: var(--mont);
+  transition: all 0.3s ease;
+
+  &:hover {
+    letter-spacing: 5px;
+  }
+}

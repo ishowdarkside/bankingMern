@@ -1,0 +1,38 @@
+.inputWrapper {
+  position: relative;
+  :global(img) {
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+  }
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 43rem;
+  max-width: 43rem;
+
+  input {
+    width: 100%;
+  }
+}
+
+.signupBody {
+  h1 {
+    font-size: 5rem;
+    font-weight: 400;
+  }
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    color: #313131;
+  }
+}

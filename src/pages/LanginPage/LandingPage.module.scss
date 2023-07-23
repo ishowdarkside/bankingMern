@@ -1,0 +1,32 @@
+.body {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global(.container) {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    }
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 5rem;
+  }
+  h2 {
+    font-weight: 300;
+    font-style: italic;
+  }
+}
+
+.buttonWrapper {
+  margin-top: 3rem;
+  display: flex;
+  gap: 3rem;
+}

@@ -1,24 +1,58 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import { SpinnerCircular } from "spinners-react";
+import { signup } from "../../services/signup";
 import Button from "../../ui/Button/Button";
 import Input from "../../ui/Input/Input";
 import styles from "./Signup.module.scss";
-import { useSignupUser } from "./useSignupUser";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function Signup() {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const { mutate, isLoading } = useSignupUser();
+  const navigate = useNavigate();
 
-  function handleSignUp(data) {
-    mutate({ ...data });
+  async function handleSignUp(formData) {
+    setIsLoading(true);
+    try {
+      // POST user data
+      const res = await signup(formData);
+
+      //Handle response with Toast
+      if (res.status === "fail") return toast.error(res.message);
+      if (res.status === "success") toast.success(res.message);
+
+      //Store jwt from response to cookie
+      console.log(res);
+      document.cookie = `jwt=${res.token};path=/`;
+      navigate("/app");
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      reset();
+      setIsLoading(false);
+    }
   }
 
+  if (isLoading)
+    return (
+      <SpinnerCircular
+        color="#313131"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+        }}
+      />
+    );
   return (
     <div className={styles.signupBody}>
       <h1>Darkside banking</h1>

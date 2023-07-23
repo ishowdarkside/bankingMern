@@ -4,6 +4,8 @@ export const signup = async (formData) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        credentials: "include",
+        "Access-Control-Allow-Origin": "http://127.0.0.1:8000/",
       },
       body: JSON.stringify(formData),
     });

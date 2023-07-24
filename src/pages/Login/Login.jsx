@@ -17,6 +17,7 @@ export default function Login() {
   const [isFetching, setIsFetching] = useState();
   const { handleSubmit, register, reset } = useForm();
   async function handleLogin(data) {
+    if (!data.email || !data.password) return;
     try {
       setIsFetching(true);
       const res = await login(data);

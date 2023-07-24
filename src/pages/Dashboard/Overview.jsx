@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
+import styles from "./Dashboard.module.scss";
 export default function Overview({ name, balance }) {
   return (
-    <div>
-      <h3>
-        Welcome back, {name[0].toUpperCase() + name.toLowerCase().slice(1)}
+    <div className={styles.overview}>
+      <h3 className={styles.welcomeHeading}>
+        Welcome back,
+        <span className={styles.username}>
+          {name?.[0]?.toUpperCase() + name?.toLowerCase()?.slice(1)}
+        </span>
       </h3>
       <p>Balance:</p>
-      <span>${balance.toFixed(2)}</span>
+      <span className={styles.balance}>${balance?.toFixed(2)}</span>
     </div>
   );
 }

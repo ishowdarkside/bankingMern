@@ -1,0 +1,185 @@
+.overview {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.dashboardLayout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 10rem;
+  gap: 2rem;
+}
+
+.balance {
+  font-size: 4rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 5rem;
+}
+
+.welcomeHeading {
+  font-weight: 400;
+}
+
+.username {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.operations {
+  background-color: #ffff;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #313131;
+  border-radius: 1rem;
+  & > * {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(div) {
+    transition: all 0.3s ease;
+  }
+  :global(div:last-of-type) {
+    border-top: 1px solid #313131;
+  }
+
+  :global(div:hover) {
+    background-color: rgba(#313131, 0.2);
+    cursor: pointer;
+  }
+}
+
+.requestPanel {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: 1rem;
+
+  button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    color: #ffff;
+    cursor: pointer;
+    background-color: #1d4ed8;
+  }
+}
+
+.requestInput {
+  background-color: #f6f7f9;
+  border-radius: 1rem;
+  color: #c0c0c9;
+  outline: none;
+  padding: 1rem;
+  border: none;
+
+  &::placeholder {
+    color: #c0c0c9;
+  }
+}
+
+.datePanel {
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+}
+
+.boldDate {
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.transactionPanel {
+  height: 40rem;
+  max-height: 40rem;
+  overflow-y: scroll;
+  position: relative;
+  background-color: #fff;
+  padding: 1rem 1rem 3rem 1rem;
+  border-radius: 1rem;
+  grid-column: 1 / -1;
+
+  h3 {
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+}
+
+.tabBar {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  justify-content: space-between;
+  border-bottom: 3px solid #c9c9c9;
+  padding-bottom: 5px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+.centerMe {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.transactionWrapper {
+  padding: 1rem 0;
+  display: flex;
+  position: relative;
+
+  justify-content: space-between;
+}
+
+.transactionsWrapper {
+  & > *:not(:last-child) {
+    border-bottom: 1px solid #c9c9c9;
+  }
+}
+
+.redirectLink {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: #1d4ed8;
+}
+
+.transactionType {
+  display: flex;
+  gap: 1rem;
+}
+
+.transAmountDeposit {
+  color: #a3e635;
+  font-weight: 500;
+}
+
+.transAmountWithdraw {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.nothingToShow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+}

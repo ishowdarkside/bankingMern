@@ -7,8 +7,10 @@ import Input from "../../ui/Input/Input";
 import styles from "./Signup.module.scss";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useProtect } from "../../hooks/useProtect";
 
 export default function Signup() {
+  useProtect();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -30,7 +32,7 @@ export default function Signup() {
       if (res.status === "success") toast.success(res.message);
 
       //Store jwt from response to cookie
-      console.log(res);
+
       document.cookie = `jwt=${res.token};path=/`;
       navigate("/app");
     } catch (err) {

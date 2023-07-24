@@ -7,11 +7,15 @@ import { login } from "../../services/login";
 import styles from "./Login.module.scss";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useProtect } from "../../hooks/useProtect";
+//mport { getCookieToken } from "../../services/getCookieToken";
 
 export default function Login() {
+  const navigate = useNavigate();
+  useProtect();
+
   const [isFetching, setIsFetching] = useState();
   const { handleSubmit, register, reset } = useForm();
-  const navigate = useNavigate();
   async function handleLogin(data) {
     try {
       setIsFetching(true);
@@ -19,6 +23,7 @@ export default function Login() {
       if (res.status === "fail") return toast.error(res.message);
       if (res.status === "success") toast.success(res.message);
 
+      document.cookie = `jwt=${res.token};path=/`;
       navigate("/app");
       reset();
     } catch (err) {
@@ -27,6 +32,7 @@ export default function Login() {
       setIsFetching(false);
     }
   }
+
   if (isFetching) return <Spinner />;
   return (
     <div className={styles.loginBody}>

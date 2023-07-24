@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login/Login";
 import AppLayout from "./ui/AppLayout/AppLayout";
 import UserContextProvider from "./contexts/userContext";
+import Loan from "./pages/Loan/Loan";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="app" element={<AppLayout />}>
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="loan" element={<Loan />} />
             </Route>
           </Routes>
         </BrowserRouter>

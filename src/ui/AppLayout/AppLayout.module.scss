@@ -1,0 +1,16 @@
+.appBody {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :global(.container) {
+    padding: 3rem 2rem;
+    flex-grow: 1;
+    margin-top: 7rem;
+
+    border-radius: 1rem;
+    background-color: #f6f7f9;
+    height: 80vh;
+    max-height: 80vh;
+  }
+}

@@ -1,9 +1,7 @@
-import { useProtect } from "../../hooks/useProtect";
 import Button from "../../ui/Button/Button";
 import styles from "./LandingPage.module.scss";
 import { useNavigate } from "react-router-dom";
 export default function LandingPage() {
-  useProtect();
   const navigate = useNavigate();
   return (
     <div className={styles.body}>

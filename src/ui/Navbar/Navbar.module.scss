@@ -1,0 +1,35 @@
+.nav {
+  position: fixed;
+  top: 0;
+  height: 8rem;
+  width: 100%;
+  background-color: #f6f7f9;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :global(.container) {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    justify-content: space-between;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    a {
+      text-decoration: none;
+      color: #313131;
+    }
+
+    :global(.active) {
+      font-weight: 700;
+    }
+  }
+}

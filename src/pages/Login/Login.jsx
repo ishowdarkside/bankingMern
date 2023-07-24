@@ -7,13 +7,13 @@ import { login } from "../../services/login";
 import styles from "./Login.module.scss";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { useProtect } from "../../hooks/useProtect";
+import { useUserContext } from "../../contexts/userContext";
+
 //mport { getCookieToken } from "../../services/getCookieToken";
 
 export default function Login() {
   const navigate = useNavigate();
-  useProtect();
-
+  const { setIsVerified } = useUserContext();
   const [isFetching, setIsFetching] = useState();
   const { handleSubmit, register, reset } = useForm();
   async function handleLogin(data) {
@@ -22,7 +22,7 @@ export default function Login() {
       const res = await login(data);
       if (res.status === "fail") return toast.error(res.message);
       if (res.status === "success") toast.success(res.message);
-
+      setIsVerified(true);
       document.cookie = `jwt=${res.token};path=/`;
       navigate("/app");
       reset();

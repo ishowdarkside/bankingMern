@@ -7,10 +7,8 @@ import Input from "../../ui/Input/Input";
 import styles from "./Signup.module.scss";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useProtect } from "../../hooks/useProtect";
 
 export default function Signup() {
-  useProtect();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,

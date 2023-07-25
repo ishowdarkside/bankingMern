@@ -1,0 +1,53 @@
+.depositForm {
+  flex-grow: 1;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input {
+    background-color: #f6f7f9;
+    border-radius: 1rem;
+    color: #c0c0c9;
+    outline: none;
+    padding: 1rem;
+    border: none;
+    width: 100%;
+  }
+  button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    color: #ffff;
+    cursor: pointer;
+    background-color: #1d4ed8;
+  }
+}
+
+.withdrawForm {
+  flex-grow: 1;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input {
+    background-color: #f6f7f9;
+    border-radius: 1rem;
+    color: #c0c0c9;
+    outline: none;
+    padding: 1rem;
+    border: none;
+    width: 100%;
+  }
+  button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    color: #ffff;
+    cursor: pointer;
+    background-color: #ef4444;
+  }
+}

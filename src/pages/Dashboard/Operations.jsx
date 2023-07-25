@@ -1,6 +1,11 @@
 import styles from "./Dashboard.module.scss";
+import formStyles from "./Forms.module.scss";
 import { useUserContext } from "../../contexts/userContext";
 import Modal from "../../ui/Modal/Modal";
+import { useState } from "react";
+import { useDeposit } from "../../hooks/useDeposit";
+import { useWithdraw } from "../../hooks/useWithdraw";
+
 export default function Operations() {
   const { currOpenModal, dispatch } = useUserContext();
   return (
@@ -25,9 +30,61 @@ export default function Operations() {
 }
 
 function DepositModal() {
-  return <h1>OVO JE DEPOSIT MODAL</h1>;
+  const [depositValue, setDepositValue] = useState("");
+  const { mutate } = useDeposit();
+
+  async function handleSubmit() {
+    mutate(depositValue);
+  }
+  return (
+    <form
+      className={formStyles.depositForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
+      <span>Deposit money:</span>
+      <div>
+        <img src="/money.svg" />
+        <input
+          type="number"
+          placeholder="$"
+          value={depositValue}
+          onChange={(e) => setDepositValue(e.target.value)}
+        />
+      </div>
+      <button>DEPOSIT</button>
+    </form>
+  );
 }
 
 function WithdrawModal() {
-  return <h1>OVO JE WITHDRAW MODAL</h1>;
+  const [withdrawValue, setWithdrawValue] = useState("");
+  const { mutate } = useWithdraw();
+
+  function handleSubmit() {
+    mutate(withdrawValue);
+  }
+  return (
+    <form
+      className={formStyles.withdrawForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
+      <span>Withdraw money:</span>
+      <div>
+        <img src="/money.svg" />
+        <input
+          type="number"
+          placeholder="$"
+          value={withdrawValue}
+          onChange={(e) => setWithdrawValue(e.target.value)}
+        />
+      </div>
+      <button>WITHDRAW</button>
+    </form>
+  );
 }

@@ -28,7 +28,7 @@ export default function Login() {
       navigate("/app");
       reset();
     } catch (err) {
-      console.log(err.message);
+      toast.error(err.message);
     } finally {
       setIsFetching(false);
     }

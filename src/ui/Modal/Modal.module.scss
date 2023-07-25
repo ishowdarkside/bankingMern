@@ -16,13 +16,15 @@
 
 .modal {
   flex-grow: 1;
-  width: 100rem;
+  width: 80rem;
   border-radius: 1rem;
-  max-width: 100rem;
-  height: 50rem;
+  max-width: 50rem;
+  height: 30rem;
   max-height: 50rem;
   background-color: #ffff;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 

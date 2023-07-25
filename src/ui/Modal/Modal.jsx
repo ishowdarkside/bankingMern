@@ -5,7 +5,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useUserContext } from "../../contexts/userContext";
 export default function Modal({ children }) {
   const { isOpenModal, dispatch } = useUserContext();
-  console.log(isOpenModal);
+
   if (!isOpenModal) return null;
   return createPortal(
     <div className={styles.overlay}>

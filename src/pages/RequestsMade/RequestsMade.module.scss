@@ -1,0 +1,62 @@
+.requestElement {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.recipientInfo {
+  display: grid;
+}
+
+.recipientFullName {
+  font-style: italic;
+}
+
+.notApproved {
+  color: #f59e0b;
+}
+
+.approved {
+  color: #22c55e;
+}
+
+.requestPlaceholder {
+  font-size: 1.2rem;
+  align-self: end;
+}
+
+.infoPanel {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c9c9c9;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.requestsWrapper {
+  padding: 2rem 0;
+
+  & > *:not(:last-child) {
+    border-bottom: 1px solid #c9c9c9;
+  }
+
+  & > * {
+    padding: 2rem 0;
+  }
+}
+
+.requestAmount {
+  color: #22c55e;
+}

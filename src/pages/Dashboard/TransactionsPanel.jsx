@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import styles from "./Dashboard.module.scss";
-import Spinner from "../../ui/Spinner";
+
 import { getMonths } from "../../services/getMonths";
-export default function TransactionsPanel({ transactions, isFetching }) {
+export default function TransactionsPanel({ transactions }) {
   return (
     <div className={styles.transactionPanel}>
-      {isFetching && <Spinner />}
       <h3>Latest transactions</h3>
       <div className={styles.tabBar}>
         <div>
@@ -27,7 +26,8 @@ export default function TransactionsPanel({ transactions, isFetching }) {
       <div className={styles.transactionsWrapper}>
         {transactions?.length > 0 &&
           transactions
-            ?.slice(0, 6)
+            ?.slice(-6)
+            .reverse()
             ?.map((t) => (
               <Transaction
                 key={t._id}
@@ -54,7 +54,7 @@ function Transaction({ type, date, value }) {
   return (
     <div className={styles.transactionWrapper}>
       <span className={styles.transactionDate}>{dateModified}</span>
-      <span className={styles.transactionType}>
+      <span className={`${styles.transactionType} ${styles.centerType}`}>
         <img
           src={type === "deposit" ? "/arrowDeposit.svg" : "/arrowWithdraw.svg"}
         />

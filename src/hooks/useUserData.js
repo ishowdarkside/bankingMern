@@ -4,11 +4,15 @@ import { useUserContext } from "../contexts/userContext";
 
 export function useUserData() {
   const { isVerified } = useUserContext();
-  const { isFetching, data: user } = useQuery({
+  const {
+    isFetching,
+    data: user,
+    isLoading,
+  } = useQuery({
     queryKey: ["user"],
     queryFn: fetchUserData,
     enabled: !!isVerified,
   });
 
-  return { isFetching, user };
+  return { isFetching, user, isLoading };
 }

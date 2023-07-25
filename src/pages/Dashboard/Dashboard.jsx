@@ -9,7 +9,7 @@ import Spinner from "../../ui/Spinner";
 
 /* eslint-disable react/prop-types */
 export default function Dashboard() {
-  const { user, isFetching } = useUserData();
+  const { user } = useUserData();
 
   if (!user) return <Spinner />;
   return (
@@ -20,10 +20,7 @@ export default function Dashboard() {
           <Operations />
           <Requests />
           <DatePanel />
-          <TransactionsPanel
-            transactions={user?.transactions}
-            isFetching={isFetching}
-          />
+          <TransactionsPanel transactions={user?.transactions} />
         </>
       )}
     </div>

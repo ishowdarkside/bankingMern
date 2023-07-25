@@ -9,6 +9,8 @@ import Login from "./pages/Login/Login";
 import AppLayout from "./ui/AppLayout/AppLayout";
 import UserContextProvider from "./contexts/userContext";
 import Loan from "./pages/Loan/Loan";
+import RequestsMade from "./pages/RequestsMade/RequestsMade";
+import RequestsReceived from "./pages/RequestsReceived/RequestsReceived";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ export default function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="loan" element={<Loan />} />
+              <Route path="requestsMade" element={<RequestsMade />} />
+              <Route path="requestsReceived" element={<RequestsReceived />} />
             </Route>
           </Routes>
         </BrowserRouter>

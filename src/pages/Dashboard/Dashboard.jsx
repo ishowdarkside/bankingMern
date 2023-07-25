@@ -6,6 +6,7 @@ import Requests from "./Request";
 import DatePanel from "./DatePanel";
 import TransactionsPanel from "./TransactionsPanel";
 import Spinner from "../../ui/Spinner";
+
 /* eslint-disable react/prop-types */
 export default function Dashboard() {
   const { user, isFetching } = useUserData();

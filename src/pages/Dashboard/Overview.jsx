@@ -6,7 +6,7 @@ export default function Overview({ name, balance }) {
       <h3 className={styles.welcomeHeading}>
         Welcome back,
         <span className={styles.username}>
-          {name?.[0]?.toUpperCase() + name?.toLowerCase()?.slice(1)}
+          {` ${name?.[0]?.toUpperCase() + name?.toLowerCase()?.slice(1)}`}
         </span>
       </h3>
       <p>Balance:</p>

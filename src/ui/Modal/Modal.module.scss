@@ -1,0 +1,38 @@
+.overlay {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  background: rgba(202, 202, 202, 0.19);
+
+  backdrop-filter: blur(8.7px);
+  -webkit-backdrop-filter: blur(8.7px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  flex-grow: 1;
+  width: 100rem;
+  border-radius: 1rem;
+  max-width: 100rem;
+  height: 50rem;
+  max-height: 50rem;
+  background-color: #ffff;
+
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.buttonClose {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 4rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}

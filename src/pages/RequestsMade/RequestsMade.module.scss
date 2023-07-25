@@ -28,23 +28,6 @@
   align-self: end;
 }
 
-.infoPanel {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #c9c9c9;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-}
-
 .requestsWrapper {
   padding: 2rem 0;
 

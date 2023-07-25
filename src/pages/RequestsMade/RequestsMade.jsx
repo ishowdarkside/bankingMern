@@ -2,16 +2,19 @@
 import { useUserData } from "../../hooks/useUserData";
 import { getMonths } from "../../services/getMonths";
 import styles from "./RequestsMade.module.scss";
+import InfoPanel from "../../ui/InfoPanel/InfoPanel";
+import Spinner from "../../ui/Spinner";
 export default function RequestsMade() {
-  const { user } = useUserData();
+  const { isLoading, user } = useUserData();
 
-  if (!user) return null;
+  if (isLoading) return <Spinner />;
+
   return (
     <div>
       {user.madeRequests.length === 0 && (
         <span>You haven&apos;t made any requests lately</span>
       )}
-      <InfoPanel />
+      {user.madeRequests.length > 0 && <InfoPanel options={false} />}
 
       <div className={styles.requestsWrapper}>
         {user.madeRequests.length > 0 &&
@@ -44,23 +47,6 @@ function Request({ request: { approved, recipient, requestDate, value } }) {
       <span className={styles.requestDates}>{formatedDate}</span>
 
       <span className={styles.requestAmount}>${value}</span>
-    </div>
-  );
-}
-
-function InfoPanel() {
-  return (
-    <div className={styles.infoPanel}>
-      <span>STATUS</span>
-      <span>RECIPIENT</span>
-      <span>
-        <img src="/calendar-sm.svg" />
-        DATE
-      </span>
-      <span>
-        <img src="/money.svg" />
-        AMOUNT
-      </span>
     </div>
   );
 }

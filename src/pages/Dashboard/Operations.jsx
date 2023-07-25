@@ -5,6 +5,7 @@ import Modal from "../../ui/Modal/Modal";
 import { useState } from "react";
 import { useDeposit } from "../../hooks/useDeposit";
 import { useWithdraw } from "../../hooks/useWithdraw";
+import Spinner from "../../ui/Spinner";
 
 export default function Operations() {
   const { currOpenModal, dispatch } = useUserContext();
@@ -31,11 +32,13 @@ export default function Operations() {
 
 function DepositModal() {
   const [depositValue, setDepositValue] = useState("");
-  const { mutate } = useDeposit();
+  const { mutate, isLoading } = useDeposit();
 
   async function handleSubmit() {
     mutate(depositValue);
   }
+
+  if (isLoading) return <Spinner />;
   return (
     <form
       className={formStyles.depositForm}
@@ -61,11 +64,12 @@ function DepositModal() {
 
 function WithdrawModal() {
   const [withdrawValue, setWithdrawValue] = useState("");
-  const { mutate } = useWithdraw();
+  const { mutate, isLoading } = useWithdraw();
 
   function handleSubmit() {
     mutate(withdrawValue);
   }
+  if (isLoading) return <Spinner />;
   return (
     <form
       className={formStyles.withdrawForm}

@@ -2,14 +2,16 @@
 import { useUserData } from "../../hooks/useUserData";
 import Spinner from "../../ui/Spinner";
 import { getMonths } from "../../services/getMonths";
-
 import styles from "./RequestsReceived.module.scss";
+import InfoPanel from "../../ui/InfoPanel/InfoPanel";
+
 export default function RequestsReceived() {
-  const {
-    isLoading,
-    user: { receivedRequests },
-  } = useUserData();
+  const { isLoading, user } = useUserData();
+
   if (isLoading) return <Spinner />;
+
+  const { receivedRequests } = user;
+
   if (receivedRequests.length === 0) return <span>No received requests</span>;
   return (
     <div className={styles.requestsWrapper}>
@@ -17,7 +19,7 @@ export default function RequestsReceived() {
 
       <div className={styles.requestsWrapper}>
         {receivedRequests
-          .slice(-8)
+          .slice(-5)
           .reverse()
           .map((r) => (
             <Request request={r} key={r._id} />
@@ -52,24 +54,6 @@ function Request({ request: { approved, receiver, value, requestDate } }) {
           <button>DECLINE</button>
         </div>
       )}
-    </div>
-  );
-}
-
-function InfoPanel() {
-  return (
-    <div className={styles.infoPanel}>
-      <span>STATUS</span>
-      <span>RECIPIENT</span>
-      <span>
-        <img src="/calendar-sm.svg" />
-        DATE
-      </span>
-      <span>
-        <img src="/money.svg" />
-        AMOUNT
-      </span>
-      <span>OPTIONS</span>
     </div>
   );
 }

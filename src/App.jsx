@@ -11,6 +11,7 @@ import UserContextProvider from "./contexts/userContext";
 import Loan from "./pages/Loan/Loan";
 import RequestsMade from "./pages/RequestsMade/RequestsMade";
 import RequestsReceived from "./pages/RequestsReceived/RequestsReceived";
+import TransactionHistory from "./pages/TransactionHistory/TransactionHistory";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ export default function App() {
               <Route path="loan" element={<Loan />} />
               <Route path="requestsMade" element={<RequestsMade />} />
               <Route path="requestsReceived" element={<RequestsReceived />} />
+              <Route path="history" element={<TransactionHistory />} />
             </Route>
           </Routes>
         </BrowserRouter>

@@ -1,0 +1,73 @@
+.transactionWrapper {
+  padding: 1rem 0;
+  display: flex;
+  position: relative;
+
+  justify-content: space-between;
+}
+
+.transactionsWrapper {
+  & > *:not(:last-child) {
+    border-bottom: 1px solid #c9c9c9;
+  }
+}
+
+.centerMe {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.transactionWrapper {
+  padding: 2rem 0.5rem;
+  display: flex;
+  position: relative;
+
+  justify-content: space-between;
+}
+
+.transactionsWrapper {
+  & > *:not(:last-child) {
+    border-bottom: 1px solid #c9c9c9;
+  }
+}
+
+.redirectLink {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: #1d4ed8;
+}
+
+.transactionType {
+  display: flex;
+  gap: 1rem;
+}
+
+.transAmountDeposit {
+  color: #a3e635;
+  font-weight: 500;
+}
+
+.transAmountWithdraw {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.nothingToShow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.centerType {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

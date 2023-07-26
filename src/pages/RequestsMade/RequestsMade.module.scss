@@ -43,26 +43,3 @@
 .requestAmount {
   color: #22c55e;
 }
-
-.paginationWrapper {
-  display: flex;
-  position: absolute;
-  bottom: 1rem;
-  right: 2rem;
-  gap: 1rem;
-  button {
-    font-size: 1.3rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0.5rem 1.4rem;
-    color: #ffff;
-    font-weight: 400;
-    border-radius: 5px;
-    background-color: rgba(#313131, 0.4);
-  }
-}
-
-.activePage {
-  background-color: #1c4acd !important;
-}

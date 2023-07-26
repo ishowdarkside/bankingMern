@@ -1,0 +1,14 @@
+.tabBar {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  justify-content: space-between;
+  border-bottom: 3px solid #c9c9c9;
+  padding-bottom: 5px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}

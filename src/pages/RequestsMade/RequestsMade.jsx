@@ -5,6 +5,7 @@ import styles from "./RequestsMade.module.scss";
 import InfoPanel from "../../ui/InfoPanel/InfoPanel";
 import Spinner from "../../ui/Spinner";
 import { useState } from "react";
+import Pagination from "../../features/Pagination/Pagination";
 export default function RequestsMade() {
   const { isLoading, user } = useUserData();
   const [page, setPage] = useState(1);
@@ -27,21 +28,13 @@ export default function RequestsMade() {
           paginatedRequests.map((r) => <Request request={r} key={r.id} />)}
       </div>
 
-      {user.madeRequests.length > 7 && (
-        <div className={styles.paginationWrapper}>
-          {page > 1 && (
-            <button onClick={() => setPage((page) => page - 1)}>
-              {page - 1}
-            </button>
-          )}
-          <button className={styles.activePage}>{page}</button>
-          {paginatedRequests.length === 7 && (
-            <button onClick={() => setPage((page) => page + 1)}>
-              {page + 1}
-            </button>
-          )}
-        </div>
-      )}
+      <Pagination
+        maxNum={7}
+        page={page}
+        setterFunc={setPage}
+        arr={user.madeRequests}
+        paginatedArr={paginatedRequests}
+      />
     </div>
   );
 }

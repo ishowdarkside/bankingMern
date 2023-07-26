@@ -9,6 +9,7 @@ import { useUserContext } from "../../contexts/userContext";
 import { useAcceptRequest } from "../../hooks/useAcceptRequest";
 import { useState } from "react";
 import { useDeclineRequest } from "../../hooks/useDeclineRequst";
+import Pagination from "../../features/Pagination/Pagination";
 
 export default function RequestsReceived() {
   const { isLoading, user } = useUserData();
@@ -38,21 +39,13 @@ export default function RequestsReceived() {
         </div>
       </div>
 
-      {receivedRequests.length > 7 && (
-        <div className={styles.paginationWrapper}>
-          {page > 1 && (
-            <button onClick={() => setPage((page) => page - 1)}>
-              {page - 1}
-            </button>
-          )}
-          <button className={styles.activePage}>{page}</button>
-          {paginatedRequests.length === 5 && (
-            <button onClick={() => setPage((page) => page + 1)}>
-              {page + 1}
-            </button>
-          )}
-        </div>
-      )}
+      <Pagination
+        arr={receivedRequests}
+        paginatedArr={paginatedRequests}
+        maxNum={5}
+        page={page}
+        setterFunc={setPage}
+      />
 
       {currOpenModal === "accept" && (
         <Modal>

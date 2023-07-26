@@ -23,6 +23,10 @@ function reducer(state, action) {
         isOpenModal: true,
         currOpenModal: action.payload.currOpenModal,
       };
+    case "modal/loan":
+      return { ...state, currOpenModal: "loan", isOpenModal: true };
+    case "payLoan":
+      return { ...state, currOpenModal: "payLoan", isOpenModal: true };
     case "reset":
       return initialState;
     default:

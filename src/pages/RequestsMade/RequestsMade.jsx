@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useUserData } from "../../hooks/useUserData";
-import { getMonths } from "../../services/getMonths";
 import styles from "./RequestsMade.module.scss";
 import InfoPanel from "../../ui/InfoPanel/InfoPanel";
 import Spinner from "../../ui/Spinner";
 import { useState } from "react";
 import Pagination from "../../features/Pagination/Pagination";
+import { formatDate } from "../../services/formatDate";
 export default function RequestsMade() {
   const { isLoading, user } = useUserData();
   const [page, setPage] = useState(1);
@@ -40,10 +40,7 @@ export default function RequestsMade() {
 }
 
 function Request({ request: { approved, recipient, requestDate, value } }) {
-  const months = getMonths();
-  const formatedDate = `${months[new Date(requestDate).getMonth()]} ${new Date(
-    requestDate
-  ).getDate()} ${new Date(requestDate).getFullYear()}`;
+  const formatedDate = formatDate(requestDate);
   return (
     <div className={styles.requestElement}>
       {!approved && <span className={styles.notApproved}>NOT APPROVED</span>}

@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import styles from "./Dashboard.module.scss";
-
-import { getMonths } from "../../services/getMonths";
 import TabBar from "../../ui/TabBar/TabBar";
+import { formatDate } from "../../services/formatDate";
 export default function TransactionsPanel({ transactions }) {
   return (
     <div className={styles.transactionPanel}>
@@ -27,20 +26,20 @@ export default function TransactionsPanel({ transactions }) {
           <span className={styles.nothingToShow}>NO RECENT TRANSACTIONS.</span>
         )}
       </div>
-      <Link to="history" className={styles.redirectLink}>
-        View more
-      </Link>
+      {transactions.length > 6 && (
+        <Link to="/app/history" className={styles.redirectLink}>
+          View more
+        </Link>
+      )}
     </div>
   );
 }
 
 function Transaction({ type, date, value }) {
-  const newDate = new Date(date);
-  const months = getMonths();
-  const dateModified = `${newDate.getDate()} ${months[newDate.getMonth()]}`;
+  const formatedDate = formatDate(date);
   return (
     <div className={styles.transactionWrapper}>
-      <span className={styles.transactionDate}>{dateModified}</span>
+      <span className={styles.transactionDate}>{formatedDate}</span>
       <span className={`${styles.transactionType} ${styles.centerType}`}>
         <img
           src={type === "deposit" ? "/arrowDeposit.svg" : "/arrowWithdraw.svg"}

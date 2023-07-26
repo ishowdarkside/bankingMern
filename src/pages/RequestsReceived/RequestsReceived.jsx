@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useUserData } from "../../hooks/useUserData";
 import Spinner from "../../ui/Spinner";
-import { getMonths } from "../../services/getMonths";
+import { formatDate } from "../../services/formatDate";
 import styles from "./RequestsReceived.module.scss";
 import InfoPanel from "../../ui/InfoPanel/InfoPanel";
 import Modal from "../../ui/Modal/Modal";
@@ -64,10 +64,8 @@ export default function RequestsReceived() {
 function Request({ request }) {
   const { approved, receiver, value, requestDate } = request;
   const { dispatch } = useUserContext();
-  const months = getMonths();
-  const formatedDate = `${months[new Date(requestDate).getMonth()]} ${new Date(
-    requestDate
-  ).getDate()} ${new Date(requestDate).getFullYear()}`;
+
+  const formatedDate = formatDate(requestDate);
   return (
     <>
       <div className={styles.requestElement}>

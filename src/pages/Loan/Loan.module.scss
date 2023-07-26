@@ -1,0 +1,132 @@
+.requestPanel {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    padding: 1rem 2rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #1c4acd;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.loanForm {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 3rem;
+  flex-direction: column;
+}
+
+.closeForm {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.elementsWrapper {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input {
+    background-color: #f6f7f9;
+    border-radius: 1rem;
+    color: #c0c0c9;
+    outline: none;
+    padding: 1rem;
+    border: none;
+    width: 100%;
+  }
+  button {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    &:first-of-type {
+      background-color: #1c4acd;
+      color: #fff;
+    }
+
+    &:last-of-type {
+      background-color: #ff5555;
+      color: #fff;
+    }
+  }
+}
+
+.hasLoanPanel {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.alert {
+  font-size: 3rem;
+}
+
+.payLoanPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 3rem;
+  button {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    &:first-of-type {
+      background-color: #1c4acd;
+      color: #fff;
+    }
+
+    &:last-of-type {
+      background-color: #ff5555;
+      color: #fff;
+    }
+  }
+}
+
+.triggerModal {
+  margin-top: 5rem;
+  padding: 1rem 2rem;
+  color: #fff;
+  background-color: #1c4acd;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5rem;
+}
+
+.loanAlert {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.loanInfo {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+}

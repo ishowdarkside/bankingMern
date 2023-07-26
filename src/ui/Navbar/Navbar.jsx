@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import { AiOutlineUser } from "react-icons/ai";
 import { useUserData } from "../../hooks/useUserData";
@@ -20,12 +20,17 @@ export default memo(function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className="container">
-        <h2>Darkside Banking</h2>
+        <Link className={styles.navLogo} to="/app">
+          Darkside banking
+        </Link>
         <ul>
           <li>
             <NavLink to="dashboard">Dashboard</NavLink>
           </li>
           <li>
+            {user.hasLoan && !pathname.endsWith("loan") && (
+              <span className={styles.hasLoan}></span>
+            )}
             <NavLink to="loan">Laon</NavLink>
           </li>
           <li>

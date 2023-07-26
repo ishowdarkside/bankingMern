@@ -2,7 +2,11 @@
 import { createContext, useContext, useReducer, useState } from "react";
 
 const UserContext = createContext();
-const initialState = { currOpenModal: null, isOpenModal: false };
+const initialState = {
+  currOpenModal: null,
+  isOpenModal: false,
+  activeRequest: null,
+};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -12,12 +16,23 @@ function reducer(state, action) {
       return { ...state, currOpenModal: "withdraw", isOpenModal: true };
     case "modal/close":
       return { ...state, currOpenModal: null, isOpenModal: false };
+    case "request/assign":
+      return {
+        ...state,
+        activeRequest: action.payload.value,
+        isOpenModal: true,
+        currOpenModal: action.payload.currOpenModal,
+      };
+    case "reset":
+      return initialState;
+    default:
+      throw new Error("UNKOWN ACTION TYPE");
   }
 }
 
 export default function UserContextProvider({ children }) {
   const [isVerified, setIsVerified] = useState(false);
-  const [{ currOpenModal, isOpenModal }, dispatch] = useReducer(
+  const [{ currOpenModal, isOpenModal, activeRequest }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -29,6 +44,7 @@ export default function UserContextProvider({ children }) {
         currOpenModal,
         isOpenModal,
         dispatch,
+        activeRequest,
       }}
     >
       {children}

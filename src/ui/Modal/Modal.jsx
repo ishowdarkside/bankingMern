@@ -8,14 +8,16 @@ export default function Modal({ children }) {
 
   if (!isOpenModal) return null;
   return createPortal(
-    <div className={styles.overlay}>
+    <div className={styles.overlay} onClick={() => dispatch({ type: "reset" })}>
       <button
         onClick={() => dispatch({ type: "modal/close" })}
         className={styles.buttonClose}
       >
         <AiOutlineCloseCircle />
       </button>
-      <div className={styles.modal}>{children}</div>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        {children}
+      </div>
     </div>,
     document.body
   );

@@ -20,7 +20,10 @@ export default memo(function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className="container">
-        <Link className={styles.navLogo} to="/app">
+        <Link
+          className={styles.navLogo}
+          to={!pathname.endsWith("dashboard") ? "/app" : null}
+        >
           Darkside banking
         </Link>
         <ul>

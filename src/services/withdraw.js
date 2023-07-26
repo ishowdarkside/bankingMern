@@ -1,5 +1,5 @@
 export async function withdraw(withdrawValue) {
-  const res = await fetch("http://127.0.0.1:8000/api/banking/withdraw", {
+  const res = await fetch("/api/banking/withdraw", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

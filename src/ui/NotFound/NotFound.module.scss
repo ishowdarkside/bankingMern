@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 3rem;
+
+  h1 {
+    font-weight: 400;
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 40rem;
+  }
+}
+
+.navigate {
+  cursor: pointer;
+  color: #1d4ed8;
+}

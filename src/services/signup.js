@@ -1,11 +1,10 @@
 export const signup = async (formData) => {
   try {
-    const res = await fetch("http://127.0.0.1:8000/api/users/signup", {
+    const res = await fetch("/api/users/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         credentials: "include",
-        "Access-Control-Allow-Origin": "http://127.0.0.1:8000/",
       },
       body: JSON.stringify(formData),
     });

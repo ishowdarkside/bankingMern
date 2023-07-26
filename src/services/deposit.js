@@ -1,5 +1,5 @@
 export async function deposit(depositValue) {
-  const res = await fetch("http://127.0.0.1:8000/api/banking/deposit", {
+  const res = await fetch("/api/banking/deposit", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

@@ -1,0 +1,28 @@
+.userPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.label {
+  margin-bottom: 5rem;
+}
+
+.logout {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  outline: none;
+  border-radius: 5rem;
+  background-color: #ef4444;
+  color: #ffff;
+  cursor: pointer;
+}

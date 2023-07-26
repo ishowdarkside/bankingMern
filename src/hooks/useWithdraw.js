@@ -23,5 +23,6 @@ export function useWithdraw() {
         queryClient.invalidateQueries({ queryKey: ["user"] });
       }
     },
+    onError: (err) => toast.error(err.message),
   });
 }

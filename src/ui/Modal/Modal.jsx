@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { TfiClose } from "react-icons/tfi";
 import { useUserContext } from "../../contexts/userContext";
 export default function Modal({ children }) {
   const { isOpenModal, dispatch } = useUserContext();
@@ -13,7 +13,7 @@ export default function Modal({ children }) {
         onClick={() => dispatch({ type: "modal/close" })}
         className={styles.buttonClose}
       >
-        <AiOutlineCloseCircle />
+        <TfiClose />
       </button>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {children}

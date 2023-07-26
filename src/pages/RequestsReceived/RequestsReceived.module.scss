@@ -65,3 +65,56 @@
     padding: 2rem 0;
   }
 }
+
+.paginationWrapper {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  gap: 1rem;
+  button {
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.5rem 1.4rem;
+    color: #ffff;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: rgba(#313131, 0.4);
+  }
+}
+
+.activePage {
+  background-color: #1c4acd !important;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem;
+
+  div {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      padding: 1rem;
+      color: #fff;
+      border-radius: 5px;
+      &:first-of-type {
+        background-color: #1c4acd;
+      }
+
+      &:last-of-type {
+        background-color: #ff5555;
+      }
+    }
+  }
+}

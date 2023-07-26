@@ -1,18 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { request } from "../services/request";
+import { declineRequest } from "../services/declineRequest";
 import { toast } from "react-hot-toast";
-export function useRequest() {
+export function useDeclineRequest() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ recipient, amount }) => request(recipient, amount),
+    mutationFn: declineRequest,
     onSuccess: (res) => {
       if (res.status === "success") {
+        queryClient.invalidateQueries(["user"]);
         toast.success(res.message);
-        queryClient.invalidateQueries({ queryKey: ["user"] });
       }
-      if (res.status === "fail") {
-        toast.error(res.message);
-      }
+      if (res.status === "fail") toast.error(res.message);
     },
     onError: (err) => toast.error(err.message),
   });

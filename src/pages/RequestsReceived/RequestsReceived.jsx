@@ -7,13 +7,23 @@ import InfoPanel from "../../ui/InfoPanel/InfoPanel";
 import Modal from "../../ui/Modal/Modal";
 import { useUserContext } from "../../contexts/userContext";
 import { useAcceptRequest } from "../../hooks/useAcceptRequest";
+import { useState } from "react";
+import { useDeclineRequest } from "../../hooks/useDeclineRequst";
 
 export default function RequestsReceived() {
   const { isLoading, user } = useUserData();
   const { activeRequest, currOpenModal } = useUserContext();
 
+  const [page, setPage] = useState(1);
+
   if (isLoading) return <Spinner />;
   const { receivedRequests } = user;
+
+  const startStep = -5 * page;
+  const endStep = page == 1 ? receivedRequests.length : -5 * page + 5;
+  const paginatedRequests = receivedRequests
+    .slice(startStep, endStep)
+    .reverse();
 
   if (receivedRequests.length === 0) return <span>No received requests</span>;
   return (
@@ -22,14 +32,27 @@ export default function RequestsReceived() {
         <InfoPanel />
 
         <div className={styles.requestsWrapper}>
-          {receivedRequests
-            .slice(-5)
-            .reverse()
-            .map((r) => (
-              <Request request={r} key={r._id} />
-            ))}
+          {paginatedRequests.map((r) => (
+            <Request request={r} key={r._id} />
+          ))}
         </div>
       </div>
+
+      {receivedRequests.length > 7 && (
+        <div className={styles.paginationWrapper}>
+          {page > 1 && (
+            <button onClick={() => setPage((page) => page - 1)}>
+              {page - 1}
+            </button>
+          )}
+          <button className={styles.activePage}>{page}</button>
+          {paginatedRequests.length === 5 && (
+            <button onClick={() => setPage((page) => page + 1)}>
+              {page + 1}
+            </button>
+          )}
+        </div>
+      )}
 
       {currOpenModal === "accept" && (
         <Modal>
@@ -102,34 +125,51 @@ function AcceptRequest({ request }) {
 
   if (isLoading) return <Spinner />;
   return (
-    <div>
+    <div className={styles.modal}>
       <span>
         Are you sure you want to accept this request? Your account will be
         charged for additional ${request.value}.
       </span>
-      <button
-        onClick={() =>
-          mutate(request._id, { onSuccess: () => dispatch({ type: "reset" }) })
-        }
-      >
-        ACCEPT
-      </button>
-      <button onClick={() => dispatch({ type: "reset" })}>CANCEL</button>
+      <div>
+        <button
+          onClick={() =>
+            mutate(request._id, {
+              onSuccess: () => dispatch({ type: "reset" }),
+            })
+          }
+        >
+          ACCEPT
+        </button>
+        <button onClick={() => dispatch({ type: "reset" })}>CANCEL</button>
+      </div>
     </div>
   );
 }
 
 function DeclineRequest({ request }) {
   const { dispatch } = useUserContext();
+  const { mutate, isLoading } = useDeclineRequest();
+
+  if (isLoading) return <Spinner />;
   return (
-    <div>
+    <div className={styles.modal}>
       <span>
         Are you sure you want to decline this request? This action is
-        inevitable. If you change your mind, {request.receiver.name} will have
+        irreversible. If you change your mind, {request.receiver.name} will have
         to make a request again.
       </span>
-      <button>Yes, i am sure</button>
-      <button onClick={() => dispatch({ type: "reset" })}>Cancel</button>
+      <div>
+        <button
+          onClick={() =>
+            mutate(request._id, {
+              onSuccess: () => dispatch({ type: "reset" }),
+            })
+          }
+        >
+          Yes, i am sure
+        </button>
+        <button onClick={() => dispatch({ type: "reset" })}>Cancel</button>
+      </div>
     </div>
   );
 }

@@ -4,11 +4,17 @@ import { getMonths } from "../../services/getMonths";
 import styles from "./RequestsMade.module.scss";
 import InfoPanel from "../../ui/InfoPanel/InfoPanel";
 import Spinner from "../../ui/Spinner";
+import { useState } from "react";
 export default function RequestsMade() {
   const { isLoading, user } = useUserData();
+  const [page, setPage] = useState(1);
 
   if (isLoading) return <Spinner />;
-
+  const startStep = -7 * page;
+  const endStep = page == 1 ? user.madeRequests.length : -7 * page + 7;
+  const paginatedRequests = user.madeRequests
+    .slice(startStep, endStep)
+    .reverse();
   return (
     <div>
       {user.madeRequests.length === 0 && (
@@ -18,11 +24,24 @@ export default function RequestsMade() {
 
       <div className={styles.requestsWrapper}>
         {user.madeRequests.length > 0 &&
-          user.madeRequests
-            .slice(-7)
-            .reverse()
-            .map((r) => <Request request={r} key={r.id} />)}
+          paginatedRequests.map((r) => <Request request={r} key={r.id} />)}
       </div>
+
+      {user.madeRequests.length > 7 && (
+        <div className={styles.paginationWrapper}>
+          {page > 1 && (
+            <button onClick={() => setPage((page) => page - 1)}>
+              {page - 1}
+            </button>
+          )}
+          <button className={styles.activePage}>{page}</button>
+          {paginatedRequests.length === 7 && (
+            <button onClick={() => setPage((page) => page + 1)}>
+              {page + 1}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

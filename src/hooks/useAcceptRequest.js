@@ -14,5 +14,6 @@ export function useAcceptRequest() {
         toast.error(res.message);
       }
     },
+    onError: (err) => toast.error(err.message),
   });
 }
